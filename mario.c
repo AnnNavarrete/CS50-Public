@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 int get_positive_int(string prompt);
-int main(void)
 
+int main(int argc, string argv[])
 {
     int height = get_positive_int("Height: ");
 }
