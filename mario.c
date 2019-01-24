@@ -1,10 +1,9 @@
-//Mario code less comfortable
+// Mario code less comfortable
 
 #include <cs50.h>
 #include <stdio.h>
 
 int get_positive_int(string prompt);
-
 int main(void)
 
 {
