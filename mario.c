@@ -1,4 +1,6 @@
-// Mario code less comfortable
+// Ann Navarrete
+// 24 January 2019
+// Problem Set 1 - Mario code less comfortable
 
 #include <cs50.h>
 #include <stdio.h>
@@ -17,7 +19,7 @@ int get_positive_int(string prompt)
     {
         max_height = get_int("%s", prompt);
     }
-    while (max_height <1 || max_height >8);
+    while (max_height < 1 || max_height > 8);
     // This calculates the height and width of the pyramid
     for (int current_height = 0; current_height < max_height; current_height++)
     {
