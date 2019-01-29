@@ -44,15 +44,15 @@ int main(int argc, string argv[])
     // Number of nickles
     for (nickle = 1; cents >= 5; nickle++)
     {
-        cents -=5;
-        count +=1;
+        cents -= 5;
+        count += 1;
     }
     
     // Number of pennies
     for (pennies = 0; cents >= 1; pennies++)
     {
-        cents -=1;
-        count +=1;
+        cents -= 1;
+        count += 1;
     }
 
     printf("%d\n", count);
