@@ -32,11 +32,15 @@ int main(int argc, string argv[])
                 int wrappedChar = alphaPos % 26;
                 printf("%c", wrappedChar + 97);
             }
-            if isupper(plaintext[i])
+            else if isupper(plaintext[i])
             {
                 int alphaPos = plaintext[i] + key - 65;
                 int wrappedChar = alphaPos % 26;
                 printf("%c", wrappedChar + 65);
+            }
+            else 
+            {
+                printf("%c", plaintext[i]);
             }
         }
         printf("\n");
