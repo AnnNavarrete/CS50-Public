@@ -1,0 +1,6 @@
+0 Check the program has only one command-line arguement
+1 Use if statement to check only one command-line arguement
+2 Convert user input from a string to an integer
+3 Prompt user for plaintext
+4 Ensure the integer received from user is non-negative
+5 
