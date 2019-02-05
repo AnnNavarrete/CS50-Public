@@ -35,9 +35,11 @@ int main(int argc, string argv[])
         string plaintext = get_string("plaintext: ");
         printf("ciphertext: ");
         
+        int j = 0;
+        
         for (int i = 0; i < strlen(plaintext); i++)
         {   
-            char keyChar = key[i % strlen(key)];
+            char keyChar = key[j % strlen(key)];
             int amountToShift = shift(keyChar);
             
             // Encrypt and preserve lower case characters
@@ -47,12 +49,14 @@ int main(int argc, string argv[])
                 int alphaPos = plaintext[i] + amountToShift - 97; 
                 // Keep the number within the alphabet loop
                 int wrappedChar = alphaPos % 26;
+                j = j + 1;
                 printf("%c", wrappedChar + 97);
             } 
             else if isupper(plaintext[i])
             {
                 int alphaPos = plaintext[i] + amountToShift - 65;
                 int wrappedChar = alphaPos % 26;
+                j = j + 1;
                 printf("%c", wrappedChar + 65);
             }
             else 
