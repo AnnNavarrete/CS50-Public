@@ -1,0 +1,12 @@
+0 Check program has only one command-line arguement
+1 Verify the keyword is an alphabet
+2 Convert character to an integer value
+3 Prompt user for plaintext keyword
+4 Preserve cipher code based on key
+  encrypt lower case letter
+  encrypt upper case letter
+5 Ensure alphabet letter loops back to the alphabet
+
+
+
+
