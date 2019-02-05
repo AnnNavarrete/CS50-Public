@@ -15,7 +15,7 @@ int main(int argc, string argv[])
     if (argc != 2)
     {
         printf("Usage: ./vigenere key\n");
-        return 1;
+        return 0;
     }
     else
     { 
@@ -28,7 +28,7 @@ int main(int argc, string argv[])
             if (isalpha(key[i]) == false)
             {
                 printf("Usage: ./vigenere key\n");
-                return 1;
+                return 0;
             }
         } 
         // Prompt user input in plaintext
