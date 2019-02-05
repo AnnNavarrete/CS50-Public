@@ -15,7 +15,7 @@ int main(int argc, string argv[])
     if (argc != 2)
     {
         printf("Usage: ./vigenere key\n");
-        return 0;
+        return 1;
     }
     else
     { 
@@ -28,7 +28,7 @@ int main(int argc, string argv[])
             if (isalpha(key[i]) == false)
             {
                 printf("Usage: ./vigenere key\n");
-                return 0;
+                return 1;
             }
         } 
         // Prompt user input in plaintext
@@ -37,9 +37,9 @@ int main(int argc, string argv[])
         
         for (int i = 0; i < strlen(plaintext); i++)
         {   
-            int keyChar = key[i % strlen(key)];
-            int shift = shift(keyChar);
-            printf("%c", plaintext[i] + shift);
+            char keyChar = key[i % strlen(key)];
+            int amountToShift = shift(keyChar);
+            printf("%c", plaintext[i] + amountToShift);
         }
         printf("\n");
     }   
