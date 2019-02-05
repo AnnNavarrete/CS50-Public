@@ -39,7 +39,26 @@ int main(int argc, string argv[])
         {   
             char keyChar = key[i % strlen(key)];
             int amountToShift = shift(keyChar);
-            printf("%c", plaintext[i] + amountToShift);
+            
+            // Encrypt and preserve lower case characters
+            if islower(plaintext[i])
+            {
+                // Position of the character in the alphabet
+                int alphaPos = plaintext[i] + amountToShift - 97; 
+                // Keep the number within the alphabet loop
+                int wrappedChar = alphaPos % 26;
+                printf("%c", wrappedChar + 97);
+            } 
+            else if isupper(plaintext[i])
+            {
+                int alphaPos = plaintext[i] + amountToShift - 65;
+                int wrappedChar = alphaPos % 26;
+                printf("%c", wrappedChar + 65);
+            }
+            else 
+            {
+                printf("%c", plaintext[i]);
+            }
         }
         printf("\n");
     }   
