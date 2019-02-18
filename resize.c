@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -26,7 +24,7 @@ int main(int argc, char *argv[])
     {
         printf("Please enter an n value between 1-100\n");
 
-        return 2;
+        return 1;
     }
 
 
@@ -35,7 +33,7 @@ int main(int argc, char *argv[])
     if (inptr == NULL)
     {
         fprintf(stderr, "Could not open %s.\n", infile);
-        return 3;
+        return 2;
     }
 
     // open output file
@@ -44,7 +42,7 @@ int main(int argc, char *argv[])
     {
         fclose(inptr);
         fprintf(stderr, "Could not create %s.\n", outfile);
-        return 4;
+        return 3;
     }
 
     // read infile's BITMAPFILEHEADER
@@ -68,7 +66,7 @@ int main(int argc, char *argv[])
         fclose(outptr);
         fclose(inptr);
         fprintf(stderr, "Unsupported file format.\n");
-        return 5;
+        return 4;
     }
 
     // determine padding for scanlines
@@ -106,29 +104,31 @@ int main(int argc, char *argv[])
                 {
                     fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
                 }
-                // add new padding
-                for (int m = 0; m < newPadding; m++)
-                {
-                    fputc(0x00, outptr);
-                }
-                if (j < n - 1)
-                {
-                    fseek(inptr, -bi.biWidth * sizeof(RGBTRIPLE), SEEK_CUR);
-                }
             }
+
+            // add new padding
+            for (int m = 0; m < newPadding; m++)
+            {
+                fputc(0x00, outptr);
+            }
+            if (j < n - 1)
+            {
+                fseek(inptr, -bi.biWidth * sizeof(RGBTRIPLE), SEEK_CUR);
+            }
+
         }
 
-            // skip over padding, if any
-            fseek(inptr, padding, SEEK_CUR);
+        // skip over padding, if any
+        fseek(inptr, padding, SEEK_CUR);
 
     }
 
-        // close infile
-        fclose(inptr);
+    // close infile
+    fclose(inptr);
 
-        // close outfile
-        fclose(outptr);
+    // close outfile
+    fclose(outptr);
 
-        // success
-        return 0;
+    // success
+    return 0;
 }
