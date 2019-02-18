@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     {
         printf("Please enter an n value between 1-100\n");
 
-        return 1;
+        return 2;
     }
 
 
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     if (inptr == NULL)
     {
         fprintf(stderr, "Could not open %s.\n", infile);
-        return 2;
+        return 3;
     }
 
     // open output file
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     {
         fclose(inptr);
         fprintf(stderr, "Could not create %s.\n", outfile);
-        return 3;
+        return 4;
     }
 
     // read infile's BITMAPFILEHEADER
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
         fclose(outptr);
         fclose(inptr);
         fprintf(stderr, "Unsupported file format.\n");
-        return 4;
+        return 5;
     }
 
     // determine padding for scanlines
@@ -78,7 +78,6 @@ int main(int argc, char *argv[])
     //determine new size image
     biResize.biSizeImage = ((sizeof(RGBTRIPLE)  * biResize.biWidth) + newPadding) * abs(biResize.biHeight);
     bfResize.bfSize = biResize.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
-
 
 
     // write outfile's BITMAPFILEHEADER
@@ -117,11 +116,12 @@ int main(int argc, char *argv[])
                     fseek(inptr, -bi.biWidth * sizeof(RGBTRIPLE), SEEK_CUR);
                 }
             }
+        }
 
             // skip over padding, if any
             fseek(inptr, padding, SEEK_CUR);
 
-        }
+    }
 
         // close infile
         fclose(inptr);
@@ -131,4 +131,4 @@ int main(int argc, char *argv[])
 
         // success
         return 0;
-    }
+}
